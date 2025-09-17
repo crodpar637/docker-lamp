@@ -12,6 +12,8 @@ RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
         libpng-dev \
+        libjpeg-dev \
+        libfreetype6-dev \
         libzip-dev \
         zlib1g-dev \
         libonig-dev \
@@ -24,7 +26,9 @@ RUN apt-get update \
         pdo_mysql \
         zip \
         mbstring \
-        gd
+        gd  \
+    && docker-php-ext-configure gd --with-jpeg --with-freetype 
+
 
 # Configure PHP
 RUN echo "memory_limit = ${PHP_MEMORY_LIMIT}" >> /usr/local/etc/php/conf.d/docker-php-memory-limit.ini \
