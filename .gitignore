@@ -5,4 +5,5 @@
 /dump/*
 !/dump/.gitkeep
 .DS_Store
+/www/*
 !/www/.gitkeep
