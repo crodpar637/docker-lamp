@@ -79,7 +79,8 @@ networks:
         driver: bridge
     backend:
         driver: bridge
-        internal: true
+        # Si se activa "internal", esta red será interna y no permitirá acceso desde fuera del entorno Docker
+        # internal: true  
 
 volumes:
     persistent:
