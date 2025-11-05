@@ -20,16 +20,15 @@ RUN apt-get update \
         curl \
         sendmail \
     && rm -rf /var/lib/apt/lists/* \
+    && docker-php-ext-configure gd --with-jpeg --with-freetype \
     && docker-php-ext-install -j$(nproc) \
         mysqli \
         pdo \
         pdo_mysql \
         zip \
         mbstring \
-        gd  \
-    && docker-php-ext-configure gd --with-jpeg --with-freetype 
-
-
+        gd  
+     
 # Configure PHP
 RUN echo "memory_limit = ${PHP_MEMORY_LIMIT}" >> /usr/local/etc/php/conf.d/docker-php-memory-limit.ini \
     && echo "max_execution_time = ${PHP_MAX_EXECUTION_TIME}" >> /usr/local/etc/php/conf.d/docker-php-max-execution-time.ini \
