@@ -1,5 +1,10 @@
 version: "3.8"
-
+# ==================================================================
+# Parámetros de entorno para desarrollo en el fichero .env.example
+# Antes de ejecutar docker-compose up -d, 
+# debe copiarse .env.example en el fichero .env 
+# para que se utilicen los parámetros predefinidos
+# ==================================================================
 services:
     db:
         image: mysql:8.0
